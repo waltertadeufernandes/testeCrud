@@ -2,7 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ClientsService } from './../services/clients.service';
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Clients } from '../model/clients';
 
@@ -15,11 +15,11 @@ import { Clients } from '../model/clients';
 export class AddClientComponent implements OnInit {
   form = this.formBuilder.group({
     _id: [''],
-    name: [''],
-    cpf: [''],
-    dataNascimento: [''],
-    rendaMensal: [''],
-    email: [''],
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200), Validators.pattern('/^[a-zA-Z]+\s[a-zA-Z]+$/')]],
+    cpf: ['', [Validators.required, Validators.maxLength(11)]],
+    dataNascimento: ['', [Validators.required, Validators.maxLength(11)]],
+    rendaMensal: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
     dataCadastro: ['']
   });
 
@@ -65,5 +65,19 @@ export class AddClientComponent implements OnInit {
     this.snackBar.open('Erro ao adicionar cliente.', 'x', {
       duration: 5000
     });
+  }
+
+  getErrorMessage(fieldName: string) {
+    const field = this.form.get(fieldName);
+
+    if (field?.hasError('required')) {
+      return 'Campo obrigatório';
+    }
+
+    if (this.form.get('name')?.hasError('pattern')) {
+      return 'Digite um nome válido'
+    }
+
+    return field?.hasError('email') ? 'Digite um e-mail válido' : '';
   }
 }
