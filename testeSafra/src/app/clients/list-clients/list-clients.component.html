@@ -1,0 +1,41 @@
+<mat-table [dataSource]="clients">
+  <!-- Nome -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Nome do Cliente</mat-header-cell>
+    <mat-cell *matCellDef="let clients">{{ clients.name }}</mat-cell>
+  </ng-container>
+
+  <!-- CPF -->
+  <ng-container matColumnDef="cpf">
+    <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
+    <mat-cell *matCellDef="let clients">{{ clients.cpf }}</mat-cell>
+  </ng-container>
+
+  <!-- Data Cadastro -->
+  <ng-container matColumnDef="dataCadastro">
+    <mat-header-cell *matHeaderCellDef>Data Cadastro</mat-header-cell>
+    <mat-cell *matCellDef="let clients">{{ clients.dataCadastro }}</mat-cell>
+  </ng-container>
+
+  <!-- Renda Mensal -->
+  <ng-container matColumnDef="rendaMensal">
+    <mat-header-cell *matHeaderCellDef>Renda Mensal</mat-header-cell>
+    <mat-cell *matCellDef="let clients">R$ {{ clients.rendaMensal }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef>Editar</mat-header-cell>
+    <mat-cell *matCellDef="let clients">
+      <button mat-icon-button color="primary" aria-label="Edit" (click)="onEditClient(clients)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Remover" (click)="onDeleteClient(clients)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row  *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

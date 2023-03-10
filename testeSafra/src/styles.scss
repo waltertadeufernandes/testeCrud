@@ -1,0 +1,23 @@
+/* Import Angular Material */
+@use '@angular/material' as mat;
+@include mat.core();
+
+/* Create custom palette color's */
+$primary-color: mat.define-palette(mat.$blue-palette, A700, 900);
+$secondary-color: mat.define-palette(mat.$teal-palette, 300, 700, 900);
+$warning-color: mat.define-palette(mat.$red-palette, 900);
+
+/* Define color's in Light Theme */
+$custom-app-theme: mat.define-light-theme((
+ color: (
+   primary: $primary-color,
+   accent: $secondary-color,
+   warn: $warning-color,
+ )
+));
+
+/* Include custom color's in all component's */
+@include mat.all-component-themes($custom-app-theme);
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

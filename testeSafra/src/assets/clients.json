@@ -1,0 +1,18 @@
+[
+  { "_id": "1",
+    "name": "Walter Fernandes",
+    "CPF": "111.222.333-00",
+    "dataNascimento": "25/10/1987",
+    "rendaMensal": "R$10.000,00",
+    "email": "walter.fernandes@gft.com",
+    "dataCadastro": "07/03/2023"
+  },
+  { "_id": "2",
+  "name": "Walter Fernandes",
+  "CPF": "111.222.333-00",
+  "dataNascimento": "25/10/1987",
+  "rendaMensal": "R$10.000,00",
+  "email": "walter.fernandes@gft.com",
+  "dataCadastro": "07/03/2023"
+}
+]

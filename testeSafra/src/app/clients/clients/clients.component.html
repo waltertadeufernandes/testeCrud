@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar>
+      <span>Listagem de Clientes</span>
+    </mat-toolbar>
+
+    <div class="mat-elevation-z8">
+      <app-list-clients *ngIf="clients$ | async as clients; else spinner" [clients]="clients" (add)="onAddClient()" (edit)="onEditClient($event)" (delete)="onDeleteClient($event)"></app-list-clients>
+    </div>
+
+    <ng-template #spinner>
+      <div class="loader-spinner">
+        <mat-spinner color="primary"></mat-spinner>
+      </div>
+    </ng-template>
+    <div class="addButtonClient">
+      <button mat-button color="primary" aria-label="Novo Cliente" (click)="onAddClient()">
+        <mat-icon>add</mat-icon> Adicionar Cliente
+      </button>
+    </div>
+
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-content>
+    <mat-toolbar>
+      <span>Adicionar Cliente</span>
+    </mat-toolbar>
+    <form [formGroup]="form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput placeholder="Nome" formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>CPF</mat-label>
+        <input matInput placeholder="CPF" formControlName="cpf">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Data Nascimento</mat-label>
+        <input matInput placeholder="Data Nascimento" formControlName="dataNascimento">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>E-mail</mat-label>
+        <input matInput placeholder="E-mail" formControlName="email">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Renda Mensal</mat-label>
+        <input matInput placeholder="Renda Mensal" class="example-right-align" formControlName="rendaMensal">
+        <span matTextPrefix>R$&nbsp;</span>
+        <span matTextSuffix>,00</span>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="hidden-input">
+        <input matInput value="13/03/2023" formControlName="dataCadastro">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
+    <button mat-raised-button (click)="onCancel()">Cancelar</button>
+  </mat-card-actions>
+</mat-card>

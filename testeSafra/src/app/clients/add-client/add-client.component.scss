@@ -1,0 +1,40 @@
+mat-card {
+  max-width: 70%;
+  margin: 2em auto;
+}
+
+form {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 48%;
+}
+
+mat-card-actions {
+  justify-content: center;
+}
+
+mat-card-actions button {
+  margin: 0 5px;
+}
+
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
