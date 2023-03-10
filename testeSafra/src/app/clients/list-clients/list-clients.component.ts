@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Clients } from '../model/clients';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-list-clients',
@@ -13,7 +14,9 @@ export class ListClientsComponent {
   @Output() edit = new EventEmitter(false);
   @Output() delete = new EventEmitter(false);
 
-  readonly displayedColumns = ['name', 'cpf', 'dataCadastro', 'rendaMensal', 'actions'];
+  dataSource = new MatTableDataSource(this.clients);
+
+  readonly displayedColumns: string[] = ['name', 'lastname', 'cpf', 'dataCadastro', 'rendaMensal', 'actions'];
 
   constructor(
     private router: Router,
@@ -30,6 +33,11 @@ export class ListClientsComponent {
 
   onAddClient() {
     this.add.emit(true);
+  }
+
+  applyFilter(event: any) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }

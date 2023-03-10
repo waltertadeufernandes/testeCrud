@@ -21,7 +21,8 @@ public class BaseclientsApplication {
 			clientsRepository.deleteAll();
  
 			ClientsModel c = new ClientsModel();
-			c.setName("Walter Fernandes");
+			c.setName("Walter");
+			c.setLastname("Fernandes");
 			c.setCpf("111.222.333-00");
 			c.setDataNascimento("25/10/1987");
 			c.setRendaMensal("10000,00");

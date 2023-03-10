@@ -1,13 +1,19 @@
 <mat-card>
   <mat-card-content>
-    <mat-toolbar>
+    <mat-toolbar class="border-style">
       <span>Adicionar Cliente</span>
     </mat-toolbar>
     <form [formGroup]="form">
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="outline" class="half-width">
         <mat-label>Nome</mat-label>
         <input matInput placeholder="Nome" formControlName="name">
         <mat-error *ngIf="form.get('name')?.invalid">{{getErrorMessage('name')}}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="half-width">
+        <mat-label>Sobrenome</mat-label>
+        <input matInput placeholder="Sobrenome" formControlName="lastname">
+        <mat-error *ngIf="form.get('lastname')?.invalid">{{getErrorMessage('lastname')}}</mat-error>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="half-width">

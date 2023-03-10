@@ -1,8 +1,19 @@
+<mat-form-field class="filterClients">
+  <mat-label>Filtre por Nome, Sobrenome, CPF...</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. João" #input>
+</mat-form-field>
+
 <mat-table [dataSource]="clients">
   <!-- Nome -->
   <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef>Nome do Cliente</mat-header-cell>
+    <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
     <mat-cell *matCellDef="let clients">{{ clients.name }}</mat-cell>
+  </ng-container>
+
+  <!-- Sobrenome -->
+  <ng-container matColumnDef="lastname">
+    <mat-header-cell *matHeaderCellDef>Sobrenome</mat-header-cell>
+    <mat-cell *matCellDef="let clients">{{ clients.lastname }}</mat-cell>
   </ng-container>
 
   <!-- CPF -->

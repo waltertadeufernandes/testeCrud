@@ -46,6 +46,7 @@ public class ClientsController {
     public ResponseEntity<ClientsModel> updateClient(@PathVariable Long id, @RequestBody ClientsModel recClient) {
         return clientsRepository.findById(id).map(recordFound -> {
             recordFound.setName(recClient.getName());
+            recordFound.setLastname(recClient.getLastname());
             recordFound.setCpf(recClient.getCpf());
             recordFound.setDataNascimento(recClient.getDataNascimento());
             recordFound.setRendaMensal(recClient.getRendaMensal());

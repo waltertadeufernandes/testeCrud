@@ -21,3 +21,30 @@ $custom-app-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-toolbar {
+  background: #11738b;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.mat-mdc-card {
+  box-shadow: none;
+}
+
+.mat-mdc-button {
+  background: #0a4a5b!important;
+  color: #ffffff!important;
+  border-radius: 100px!important;
+}
+
+.border-style {
+  border-bottom-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  border-top-left-radius: 100px;
+}
+
+.hidden-input {
+  opacity: 0;
+}

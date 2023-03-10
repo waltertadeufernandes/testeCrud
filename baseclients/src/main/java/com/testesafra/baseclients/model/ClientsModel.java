@@ -21,6 +21,9 @@ public class ClientsModel {
     private String name;
 
     @Column(nullable = false)
+    private String lastname;
+
+    @Column(nullable = false)
     private String cpf;
 
     @Column(nullable = false)

@@ -15,7 +15,8 @@ import { Clients } from '../model/clients';
 export class AddClientComponent implements OnInit {
   form = this.formBuilder.group({
     _id: [''],
-    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200), Validators.pattern('/^[a-zA-Z]+\s[a-zA-Z]+$/')]],
+    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+    lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
     cpf: ['', [Validators.required, Validators.maxLength(11)]],
     dataNascimento: ['', [Validators.required, Validators.maxLength(11)]],
     rendaMensal: ['', [Validators.required]],
@@ -38,11 +39,13 @@ export class AddClientComponent implements OnInit {
     this.form.setValue({
       _id: clients._id,
       name: clients.name,
+      lastname: clients.lastname,
       cpf: clients.cpf,
       dataNascimento: clients.dataNascimento,
       rendaMensal: clients.rendaMensal,
       email: clients.email,
-      dataCadastro: clients.dataCadastro
+      // Remover
+      dataCadastro: 'xx/xx/xxxx'
     });
   }
 
