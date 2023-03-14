@@ -9,19 +9,24 @@ import { Clients } from '../model/clients';
 @Component({
   selector: 'app-add-client',
   templateUrl: './add-client.component.html',
-  styleUrls: ['./add-client.component.scss']
+  styleUrls: ['./add-client.component.scss'],
 })
-
 export class AddClientComponent implements OnInit {
   form = this.formBuilder.group({
     _id: [''],
-    name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
-    lastname: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(200)]],
+    name: [
+      '',
+      [Validators.required, Validators.minLength(3), Validators.maxLength(200)],
+    ],
+    lastname: [
+      '',
+      [Validators.required, Validators.minLength(3), Validators.maxLength(200)],
+    ],
     cpf: ['', [Validators.required, Validators.maxLength(11)]],
     dataNascimento: ['', [Validators.required, Validators.maxLength(11)]],
     rendaMensal: ['', [Validators.required]],
     email: ['', [Validators.required, Validators.email]],
-    dataCadastro: ['']
+    dataCadastro: [''],
   });
 
   constructor(
@@ -30,9 +35,7 @@ export class AddClientComponent implements OnInit {
     private snackBar: MatSnackBar,
     private location: Location,
     private route: ActivatedRoute
-  ) {
-
-   }
+  ) {}
 
   ngOnInit(): void {
     const clients: Clients = this.route.snapshot.data['clients'];
@@ -45,12 +48,18 @@ export class AddClientComponent implements OnInit {
       rendaMensal: clients.rendaMensal,
       email: clients.email,
       // Remover
-      dataCadastro: 'xx/xx/xxxx'
+      dataCadastro: 'xx/xx/xxxx',
     });
+    if (clients._id) {
+      this.form.get('cpf')?.disable();
+    }
   }
 
   onSubmit() {
-    this.service.saveClient(this.form.value).subscribe(res => this.onSuccess(), error => this.onError());
+    this.service.saveClient(this.form.value).subscribe(
+      (res) => this.onSuccess(),
+      (error) => this.onError()
+    );
   }
 
   onCancel() {
@@ -59,14 +68,14 @@ export class AddClientComponent implements OnInit {
 
   private onSuccess() {
     this.snackBar.open('Cliente salvo com sucesso', 'x', {
-      duration: 5000
+      duration: 5000,
     });
     this.onCancel();
   }
 
   private onError() {
     this.snackBar.open('Erro ao adicionar cliente.', 'x', {
-      duration: 5000
+      duration: 5000,
     });
   }
 
@@ -78,7 +87,7 @@ export class AddClientComponent implements OnInit {
     }
 
     if (this.form.get('name')?.hasError('pattern')) {
-      return 'Digite um nome válido'
+      return 'Digite um nome válido';
     }
 
     return field?.hasError('email') ? 'Digite um e-mail válido' : '';

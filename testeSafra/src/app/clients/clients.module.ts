@@ -9,21 +9,24 @@ import { AddClientComponent } from './add-client/add-client.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditClientComponent } from './edit-client/edit-client.component';
 import { ListClientsComponent } from './list-clients/list-clients.component';
-
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 @NgModule({
   declarations: [
     ClientsComponent,
     AddClientComponent,
     EditClientComponent,
-    ListClientsComponent
+    ListClientsComponent,
   ],
   imports: [
     CommonModule,
     ClientsRoutingModule,
     AppMaterialModuleModule,
     SharedModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    NgxMaskDirective,
+    NgxMaskPipe,
+  ],
+  providers: [provideNgxMask()],
 })
-export class ClientsModule { }
+export class ClientsModule {}
